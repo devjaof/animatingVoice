@@ -6,8 +6,20 @@
 
 body {
   overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
 }
 
 canvas {
   background: #000000;
+}
+
+a {
+  font-size: 20px;
+  color: white;
+  position: absolute;
+
+  text-decoration: none;
+
+ margin: 20px;
 }

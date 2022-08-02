@@ -15,23 +15,34 @@ function main() {
       this.color = color;
     };
     update(micInput) {
-      this.height = micInput * 1000;
+      this.height = micInput * 500;
     };
     draw(context) {
-      context.fillStyle = this.color;
-      context.fillRect(this.x, this.y, this.width, this.height);
+      // context.fillStyle = this.color;
+      // context.fillRect(this.x, this.y, this.width, this.height);
+      context.strokeStyle = this.color;
+      context.save();
+
+      context.translate(this.x, this.y);
+      context.beginPath();
+      context.moveTo(this.width, this.height);
+      context.lineTo(this.x, this.y);
+      context.stroke();
+
+      context.restore();
     };
   }
 
+  // renderizando as barras
   const microphone = new Microphone();
-  
-  // função que chama a classe Bar
   let bars = [];
   let barWidth = canvas.width/256;
+  let barHeight = canvas.height/2;
+
   function createBars() {
     for(let i = 0; i < 256; i++) {
       let color = 'hsl(' + i * 3 + ', 100%, 50%)';
-      bars.push(new Bar(i * barWidth, canvas.height/2, 1, 20, color));
+      bars.push(new Bar(i * barWidth, barHeight , 0.8, 20, color));
     };
   }
   createBars();
@@ -47,8 +58,8 @@ function main() {
         bar.update(samples[i]);
         bar.draw(ctx);
       })
-      requestAnimationFrame(animate);
     }
+    requestAnimationFrame(animate);
   }
 
   animate();

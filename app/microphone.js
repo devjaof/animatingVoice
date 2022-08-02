@@ -1,6 +1,6 @@
 class Microphone {
   constructor() {
-    this.initialize = false;
+    this.initialized = false;
     //coleta dados do microfone
     navigator.mediaDevices.getUserMedia({audio: true})
     .then(function(stream) {
@@ -17,8 +17,8 @@ class Microphone {
 
       //conecta o microfone ao analyser
       this.microphone.connect(this.analyser);
-
-      this.initialize = true;
+      
+      this.initialized = true;
       //bing serve para que o then entenda o this
     }.bind(this)).catch(err => alert(err));
   }
