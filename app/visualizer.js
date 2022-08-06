@@ -26,8 +26,8 @@ function main() {
       context.rotate(this.index++ * 2);
 
       context.beginPath();
-      context.moveTo(80, this.height * 4);
-      context.lineTo(0, this.y);
+      context.moveTo(500, this.height);
+      context.lineTo(0.5, this.y);
       context.stroke();
 
       context.restore();
@@ -50,7 +50,7 @@ function main() {
 
   function animate() {
     if(microphone.initialized) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // ctx.clearRect(0, 0, canvas.width, canvas.height);
       // gerar sample de audio que vem do microfone
       const samples = microphone.getSamples();
   
