@@ -16,7 +16,7 @@ function main() {
       this.index = index;
     };
     update(micInput) {
-      this.height = micInput * 500;
+      this.height = micInput * 1000;
     };
     draw(context) {
       context.strokeStyle = this.color;
