@@ -9,7 +9,7 @@ class Microphone {
       this.microphone = this.audioContext.createMediaStreamSource(stream);
       //cria e configura analyser
       this.analyser = this.audioContext.createAnalyser();
-      this.analyser.fftSize = 512;
+      this.analyser.fftSize = 2048;
       
       //converte para 8bit audio
       const bufferLength = this.analyser.frequencyBinCount;
@@ -28,13 +28,13 @@ class Microphone {
     this.analyser.getByteTimeDomainData(this.dataArray);
 
     // normaliza os dados do sample para um range de -1 e 1
-    let normSamples = [...this.dataArray].map(e => e/128 - 1);
+    let normSamples = [...this.dataArray].map(e => e/256 - 1);
     return normSamples;
   }
   // retorna o volume do microfone
   getVolume(){
     this.analyser.getByteTimeDomainData(this.dataArray);
-    let normSamples = [...this.dataArray].map(e => e/128 - 1);
+    let normSamples = [...this.dataArray].map(e => e/256 - 1);
     let sum = 0;
     // RMS -> Root Means Square é uma medida de magnitude entre um grupo de números
     for(let i = 0; i < normSamples.length; i++) {

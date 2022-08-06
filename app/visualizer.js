@@ -7,25 +7,25 @@ function main() {
 
   // essa classe, quando call, irá gerar cada uma das barras que irão interagir com o microfone
   class Bar {
-    constructor(x, y, width, height, color) {
+    constructor(x, y, width, height, color, index) {
       this.x = x;
       this.y = y;
       this.width = width;
       this.height = height;
       this.color = color;
+      this.index = index;
     };
     update(micInput) {
-      this.height = micInput * 500;
+      this.height = micInput * 200;
     };
     draw(context) {
-      // context.fillStyle = this.color;
-      // context.fillRect(this.x, this.y, this.width, this.height);
       context.strokeStyle = this.color;
       context.save();
 
-      context.translate(this.x, this.y);
+      context.translate(canvas.width/2,canvas.height/2);
+      context.rotate(this.index)
       context.beginPath();
-      context.moveTo(this.width, this.height);
+      context.moveTo(this.x, this.height);
       context.lineTo(this.x, this.y);
       context.stroke();
 
@@ -36,13 +36,13 @@ function main() {
   // renderizando as barras
   const microphone = new Microphone();
   let bars = [];
-  let barWidth = canvas.width/256;
-  let barHeight = canvas.height/2;
+  let barWidth = canvas.width/2048;
+  let barHeight = canvas.height/2048;
 
   function createBars() {
-    for(let i = 0; i < 256; i++) {
+    for(let i = 0; i < 2048; i++) {
       let color = 'hsl(' + i * 3 + ', 100%, 50%)';
-      bars.push(new Bar(i * barWidth, barHeight , 0.8, 20, color));
+      bars.push(new Bar(i * (barWidth * 1.5 ), barHeight / 100  , 20, 0, color, i * 2));
     };
   }
   createBars();
