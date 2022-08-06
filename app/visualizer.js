@@ -26,7 +26,7 @@ function main() {
       context.rotate(this.index++ * 2);
 
       context.beginPath();
-      context.moveTo(0, 500);
+      context.moveTo(20, 500);
       context.lineTo(10, this.height);
       context.stroke();
 
@@ -43,7 +43,7 @@ function main() {
   function createBars() {
     for(let i = 0; i < 2048; i++) {
       let color = 'hsl(' + i * 2 + ', 100%, 50%)';
-      bars.push(new Bar(i * barWidth, i, 10, 100, color, i));
+      bars.push(new Bar(i * barWidth, i, 100, 100, color, i));
     };
   }
   createBars();
