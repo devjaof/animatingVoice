@@ -23,11 +23,11 @@ function main() {
       context.save();
 
       context.translate(canvas.width/2,canvas.height/2);
-      context.rotate(this.index++ * 4);
+      context.rotate(this.index++ * 2);
 
       context.beginPath();
-      context.moveTo(0, 0);
-      context.lineTo(0, this.height);
+      context.moveTo(0, 500);
+      context.lineTo(10, this.height);
       context.stroke();
 
       context.restore();
@@ -42,8 +42,8 @@ function main() {
 
   function createBars() {
     for(let i = 0; i < 2048; i++) {
-      let color = 'hsl(' + i * 3 + ', 100%, 50%)';
-      bars.push(new Bar(i * barWidth, barHeight, barWidth, 100, color, i));
+      let color = 'hsl(' + i * 2 + ', 100%, 50%)';
+      bars.push(new Bar(i * barWidth, i, 10, 100, color, i));
     };
   }
   createBars();
