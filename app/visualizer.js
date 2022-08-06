@@ -16,17 +16,18 @@ function main() {
       this.index = index;
     };
     update(micInput) {
-      this.height = micInput * 200;
+      this.height = micInput * 500;
     };
     draw(context) {
       context.strokeStyle = this.color;
       context.save();
 
       context.translate(canvas.width/2,canvas.height/2);
-      context.rotate(this.index)
+      context.rotate(this.index++ * 4);
+
       context.beginPath();
-      context.moveTo(this.x, this.height);
-      context.lineTo(this.x, this.y);
+      context.moveTo(0, 0);
+      context.lineTo(0, this.height);
       context.stroke();
 
       context.restore();
@@ -36,13 +37,13 @@ function main() {
   // renderizando as barras
   const microphone = new Microphone();
   let bars = [];
-  let barWidth = canvas.width/2048;
-  let barHeight = canvas.height/2048;
+  let barWidth = canvas.width/248;
+  let barHeight = canvas.height/248;
 
   function createBars() {
     for(let i = 0; i < 2048; i++) {
-      let color = 'hsl(' + i * 3 + ', 100%, 50%)';
-      bars.push(new Bar(i * (barWidth * 1.5 ), barHeight / 100  , 20, 0, color, i * 2));
+      let color = 'hsl(' + i * 0.5 + ', 100%, 50%)';
+      bars.push(new Bar(i * barWidth, barHeight, barWidth, 100, color, i));
     };
   }
   createBars();
