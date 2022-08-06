@@ -42,7 +42,7 @@ function main() {
 
   function createBars() {
     for(let i = 0; i < 2048; i++) {
-      let color = 'hsl(' + i * 0.5 + ', 100%, 50%)';
+      let color = 'hsl(' + i * 3 + ', 100%, 50%)';
       bars.push(new Bar(i * barWidth, barHeight, barWidth, 100, color, i));
     };
   }
