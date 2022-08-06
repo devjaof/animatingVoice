@@ -16,7 +16,7 @@ function main() {
       this.index = index;
     };
     update(micInput) {
-      this.height = micInput * 1000;
+      this.height = micInput * 100;
     };
     draw(context) {
       context.strokeStyle = this.color;
@@ -26,8 +26,8 @@ function main() {
       context.rotate(this.index++ * 2);
 
       context.beginPath();
-      context.moveTo(20, 500);
-      context.lineTo(10, this.height);
+      context.moveTo(80, this.height * 4);
+      context.lineTo(0, this.y);
       context.stroke();
 
       context.restore();
